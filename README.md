@@ -11,3 +11,4 @@ Construa a Backend para uma Loja de Games com a capacidade de manipular os dados
 - Crie o Relacionamento do tipo One to Many entre as Classes Categoria e Produto
 - Siga todas as boas práticas estudadas nas primeiras sessões sobre Spring (Model, Repository e Controller).
 - Teste toda a API utilizando o Postman
+ 
