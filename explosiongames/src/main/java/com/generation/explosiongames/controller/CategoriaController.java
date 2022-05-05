@@ -2,6 +2,8 @@ package com.generation.explosiongames.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,12 +46,12 @@ public class CategoriaController {
 	}
 	
 	@PostMapping // metodo para postar alguma coisa, publicacao, postagem, vai usar a mesma rota principal
-	public ResponseEntity<CategoriaModel> Post (@RequestBody CategoriaModel categoria){ // faz requisição da body
+	public ResponseEntity<CategoriaModel> Post (@Valid @RequestBody CategoriaModel categoria){ // faz requisição da body
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria)); // salva a requisiçao
 	}
 	
 	@PutMapping // metodo para atualizar dados ,vai usar a mesma rota principal
-	public ResponseEntity<CategoriaModel> Put (@RequestBody CategoriaModel categoria){ // faz requisição da body
+	public ResponseEntity<CategoriaModel> Put (@Valid @RequestBody CategoriaModel categoria){ // faz requisição da body
 		return ResponseEntity.ok(repository.save(categoria));	 // atualiza a requisição
 	}
 	

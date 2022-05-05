@@ -2,6 +2,8 @@ package com.generation.explosiongames.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,12 +46,12 @@ public class ProdutoController {
 	}
 	
 	@PostMapping 
-	public ResponseEntity<ProdutoModel> Post (@RequestBody ProdutoModel produto){ 
+	public ResponseEntity<ProdutoModel> Post (@Valid @RequestBody ProdutoModel produto){ 
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto)); 
 	}
 	
 	@PutMapping 
-	public ResponseEntity<ProdutoModel> Put (@RequestBody ProdutoModel produto){ 
+	public ResponseEntity<ProdutoModel> Put (@Valid @RequestBody ProdutoModel produto){ 
 		return repository.findById(produto.getId())
 				.map(resposta -> ResponseEntity.ok().body(repository.save(produto)))
 				.orElse(ResponseEntity.notFound().build());
