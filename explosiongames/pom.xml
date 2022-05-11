@@ -9,12 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.generation</groupId>
-	<artifactId>explosiongames</artifactId>
+	<artifactId>projetovida</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Explosion Games</name>
-	<description>Atividade prática – Desenvolvendo o Backend com Spring</description>
+	<name>Projeto Vida</name>
+	<description>Projeto integrador da Generation - 2022</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,6 +45,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!--  Dependencia para criptografia e codificacao do token -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
 		</dependency>
 	</dependencies>
 

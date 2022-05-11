@@ -13,12 +13,12 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_produto")
-public class ProdutoModel {
+@Table(name = "tb_produtos")
+public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@NotBlank
 	@Size(min = 2, max = 200)
@@ -31,13 +31,13 @@ public class ProdutoModel {
 
 	@ManyToOne
 	@JsonIgnoreProperties("produtos")
-	private CategoriaModel categoria;
+	private Categoria categoria;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -65,11 +65,11 @@ public class ProdutoModel {
 		this.disponivel = disponivel;
 	}
 
-	public CategoriaModel getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(CategoriaModel categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 

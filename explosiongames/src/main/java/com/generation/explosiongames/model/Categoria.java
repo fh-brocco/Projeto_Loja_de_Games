@@ -15,8 +15,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity // Informando que é uma entidade
-@Table(name = "tb_categoria") // Create table categoria
-public class CategoriaModel {
+@Table(name = "tb_categorias") // Create table categoria
+public class Categoria {
 
 	@Id // Primary Key -- informando que o private long id é meu ID
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
@@ -30,14 +30,13 @@ public class CategoriaModel {
 	@Size(min = 2, max = 250) // tamanho do nosso varchar
 	private String descricao; // descricao varchar (250)
 
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE) // uma categoria para muitos produtos, ligacao com
-																		// a tabela produtos, cascade remove a lista de
-																		// um looping
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL) // uma categoria para muitos produtos, ligacao com
+	// a tabela produtos, cascade remove a lista de um looping
 	@JsonIgnoreProperties("categoria") // recursividade
-	private List<ProdutoModel> produtos;
+	private List<Produto> produtos;
 
 	// Getters and Setters
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -62,12 +61,11 @@ public class CategoriaModel {
 		this.descricao = descricao;
 	}
 
-	public List<ProdutoModel> getProdutos() {
+	public List<Produto> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(List<ProdutoModel> produtos) {
+	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
-
 }

@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.generation.explosiongames.model.ProdutoModel;
+import com.generation.explosiongames.model.Produto;
 
 @Repository
-public interface ProdutoRepository extends JpaRepository<ProdutoModel,Long> {
-	public List<ProdutoModel> findAllByNomeContainingIgnoreCase (String nome);
+public interface ProdutoRepository extends JpaRepository<Produto,Long> {
+	public List<Produto> findAllByNomeContainingIgnoreCase (String nome);
 
 }

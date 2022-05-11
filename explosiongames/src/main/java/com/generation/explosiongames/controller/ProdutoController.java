@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.explosiongames.model.ProdutoModel;
+import com.generation.explosiongames.model.Produto;
 import com.generation.explosiongames.repository.ProdutoRepository;
 
 @RestController
@@ -29,29 +29,29 @@ public class ProdutoController {
 	private ProdutoRepository repository;
 	
 	@GetMapping 
-	public ResponseEntity<List<ProdutoModel>> GetAll (){ 
+	public ResponseEntity<List<Produto>> GetAll (){ 
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ProdutoModel> GetById (@PathVariable long id){
+	public ResponseEntity<Produto> GetById (@PathVariable long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 		}
 	
 	@GetMapping("/nome/{nome}") 
-	public ResponseEntity<List<ProdutoModel>> GetByCategoria (@PathVariable String nome){ 
+	public ResponseEntity<List<Produto>> GetByCategoria (@PathVariable String nome){ 
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome)); 
 	}
 	
 	@PostMapping 
-	public ResponseEntity<ProdutoModel> Post (@Valid @RequestBody ProdutoModel produto){ 
+	public ResponseEntity<Produto> Post (@Valid @RequestBody Produto produto){ 
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto)); 
 	}
 	
 	@PutMapping 
-	public ResponseEntity<ProdutoModel> Put (@Valid @RequestBody ProdutoModel produto){ 
+	public ResponseEntity<Produto> Put (@Valid @RequestBody Produto produto){ 
 		return repository.findById(produto.getId())
 				.map(resposta -> ResponseEntity.ok().body(repository.save(produto)))
 				.orElse(ResponseEntity.notFound().build());
